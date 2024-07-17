@@ -1,0 +1,254 @@
+@import './base.css';
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  font-weight: normal;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+}
+
+.size {
+  margin-left: 20px;
+}
+
+.deleteb {
+  margin-top: 20px;
+}
+
+ul, ol {
+  padding: 0;
+  position: relative;
+}
+
+ul li, ol li {
+  color: #2d8fdd;
+  border-left: solid 6px #2d8fdd;/*左側の線*/
+  background: #f1f8ff;/*背景色*/
+  margin-bottom: 3px;/*下のバーとの余白*/
+   line-height: 1.5;
+  padding: 0.5em;
+  list-style-type: none!important;/*ポチ消す*/
+}
+
+label.btn span {
+  font-size: 1.5em ;
+}
+
+label input[type="radio"] ~ i.fa.fa-circle-o{
+    color: #c8c8c8;    display: inline;
+}
+label input[type="radio"] ~ i.fa.fa-dot-circle-o{
+    display: none;
+}
+label input[type="radio"]:checked ~ i.fa.fa-circle-o{
+    display: none;
+}
+label input[type="radio"]:checked ~ i.fa.fa-dot-circle-o{
+    color: #7AA3CC;    display: inline;
+}
+label:hover input[type="radio"] ~ i.fa {
+color: #7AA3CC;
+}
+
+label input[type="checkbox"] ~ i.fa.fa-square-o{
+    color: #c8c8c8;    display: inline;
+}
+label input[type="checkbox"] ~ i.fa.fa-check-square-o{
+    display: none;
+}
+label input[type="checkbox"]:checked ~ i.fa.fa-square-o{
+    display: none;
+}
+label input[type="checkbox"]:checked ~ i.fa.fa-check-square-o{
+    color: #7AA3CC;    display: inline;
+}
+label:hover input[type="checkbox"] ~ i.fa {
+color: #7AA3CC;
+}
+
+div[data-toggle="buttons"] label.active{
+    color: #7AA3CC;
+}
+
+div[data-toggle="buttons"] label {
+display: inline-block;
+padding: 6px 12px;
+margin-bottom: 0;
+font-size: 14px;
+font-weight: normal;
+line-height: 2em;
+text-align: left;
+white-space: nowrap;
+vertical-align: top;
+cursor: pointer;
+background-color: none;
+border: 0px solid
+#c8c8c8;
+border-radius: 3px;
+color: #c8c8c8;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+-o-user-select: none;
+user-select: none;
+}
+
+div[data-toggle="buttons"] label:hover {
+color: #7AA3CC;
+}
+
+div[data-toggle="buttons"] label:active, div[data-toggle="buttons"] label.active {
+-webkit-box-shadow: none;
+box-shadow: none;
+}
+
+.wpcf7-not-valid-tip{
+  box-sizing: border-box;
+  border-radius: 8px;
+  background-color: #fce3e3;
+  border: 2px solid #ba2020;
+  border-left-width: 8px;
+  color: #ba2020;
+  margin-top: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  text-indent: -30px;
+}
+.wpcf7-not-valid-tip::before{
+  content: "";
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: top;
+  width: 20px;
+  height: 20px;
+}
+
+#app h2{
+  font-size: 16px;
+  border-bottom: 1px solid#6359b9;
+  padding: 16px 0;
+}
+
+form{
+  padding:20px;
+  margin-left: 200px;
+}
+.inputs{
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+  margin-left: 200px;
+}
+.input_form{
+	float: left;
+	width: 50%;
+}
+input[type="text"],
+textarea {
+	font: 10px/24px sans-serif;
+	box-sizing: border-box;
+	margin: 8px 0;
+	transition: 0.3s;
+	outline: none;
+	border: solid 1px #e0e0e0;
+	border-radius:5px;
+	padding:8px;
+	font-size: 15px;
+}
+select {
+	font: 10px/24px sans-serif;
+	box-sizing: border-box;
+	margin: 8px 0;
+	transition: 0.3s;
+	outline: none;
+	border: solid 1px #e0e0e0;
+	border-radius:5px;
+	padding:8px;
+	font-size: 15px;
+  text-indent: 10%;
+  width: 50%;
+}
+textarea {
+	height: 100px;
+}
+input[type="text"]:focus,
+textarea:focus {
+	border-color: #FF6701;
+}
+input[type="text"],
+textarea {
+	padding-left: 40px;
+}
+i {
+	position: absolute;
+	top: 12px;
+	left: 0;
+	padding: 9px 8px;
+	transition: 0.3s;
+	color: #aaaaaa;
+}
+input[type="text"]:focus + i,
+input[type="number"]:focus + i,
+input[type="email"]:focus + i
+textarea:focus + i {
+	color: #FF6701;
+}
+.btn-area{
+	text-align: center;
+  width: 50%;
+  margin-left: 200px;
+}
+.btn-add{
+	background: #5bbce9;
+	border: none;
+	color: #fff;
+	font-size:15px;
+	font-weight:bold;
+	padding: 5px 10px;
+	margin: 0 10px;
+	border-radius: 10px;
+}
+.btn-clear{
+	background: #aaa;
+	border: none;
+	color: #fff;
+	font-size:15px;
+	font-weight:bold;
+	padding: 5px 10px;
+	margin: 0 10px;
+	border-radius: 10px;
+}
+.todo-func-era{
+  background: #e9faf9;
+  border: none;
+  width:700px;
+  height: 300px;
+}
+
+.design02 {
+  width: 75%;
+  text-align: center;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: solid 1px #778ca3;
+  margin-top: 50px;
+ }
+ .design02 tr {
+  border-top: dashed 1px #778ca3;
+ }
+ .design02 th {
+  padding: 10px;
+  background: #e9faf9;
+ }
+ .design02 td {
+  padding: 10px;
+ }

@@ -1,0 +1,128 @@
+<template>
+    <div>
+        <input :value="todoText" @input="setTodoText" />
+        <span class="size">
+            <exeButton :buttonTitle="addButton" :onClickFunc="setTodoList" />
+        </span>
+        <span class="size">
+            <exeButton :buttonTitle="clearButton" :onClickFunc="clearText" />
+        </span>
+        <span v-if="innerTodoCheckList.length" class="size">
+            <exeButton :buttonTitle="deletButton" :onClickFunc="deletTodo" />
+        </span>
+    </div>
+    <br />
+
+    <div v-if="todoList.length" class="btn-group btn-group-vertical" data-toggle="buttons">
+        <template v-for="(text, index) in innerTodoList" :key="index">
+            <label :id="`todoId-${index}`" class="btn active">
+                <input type="checkbox" :name="text" :value="text" v-model="innerTodoCheckList" />
+                <i class="fa fa-square-o fa-2x"></i>
+                <i class="fa fa-check-square-o fa-2x"></i>
+                <template v-if="checkTodoCheckList(text)">
+                    <span class="size"><input :value="text" @input="setAfterText" /></span>
+                    <span class="size">
+                        <exeButton :disabled="errorFlag" :buttonTitle="confButton" :onClickFunc="changeTodoText" />
+                    </span>
+                </template>
+                <span v-else class="size">{{ text }}</span>
+            </label>
+
+            <br />
+        </template>
+    </div>
+    <div v-else>Todoがありません</div>
+</template>
+
+<script>
+import exeButton from '../common/CommonButton.vue';
+export default {
+    components: { exeButton },
+    props: {
+        todoList: Array,
+        addButton: String,
+        clearButton: String,
+        deletButton: String,
+        confButton: String,
+        todoText: String,
+        todoCheckList: Array,
+        errorFlag: Boolean,
+    },
+    emits: [
+        'setTodoText',
+        'clearText',
+        'deletTodo',
+        'changeTodoText',
+        'checkTodoList',
+        'setTodoList',
+        'clearCheckList',
+        'update:value',
+    ],
+    data() {
+        return { afterText: '', selectId: '' };
+    },
+
+    methods: {
+        setTodoText(e) {
+            const targetText = e.target.value;
+            this.$emit('setTodoText', targetText);
+        },
+        setTodoList() {
+            this.clearValue();
+            this.$emit('setTodoList', '');
+        },
+
+        clearText() {
+            this.clearValue();
+            this.$emit('setTodoText', '');
+        },
+        deletTodo() {
+            this.$emit('deletTodo', this.innerTodoCheckList);
+            this.clearValue();
+        },
+        setAfterText(e) {
+            const targetChangeText = e.target.value;
+            this.selectId = e.currentTarget.parentElement.parentElement.id.split('-')[1];
+            this.afterText = targetChangeText;
+            this.$emit('checkTodoList', targetChangeText);
+        },
+        changeTodoText() {
+            if (this.selectId != '' && this.afterText != '') {
+                this.$emit('changeTodoText', this.afterText, this.selectId);
+                this.clearValue();
+            }
+        },
+        checkTodoCheckList(text) {
+            return this.innerTodoCheckList.includes(text);
+        },
+        clearValue() {
+            this.$emit('clearCheckList');
+            this.selectId = '';
+            this.afterText = '';
+        },
+    },
+
+    computed: {
+        innerTodoList() {
+            if (this.todoText) {
+                return this.todoList.filter((item) => {
+                    return item.indexOf(this.todoText) > -1;
+                });
+            } else {
+                return this.todoList;
+            }
+        },
+
+        innerTodoCheckList: {
+            get() {
+                return this.todoCheckList;
+            },
+            set(value) {
+                this.$emit('update:value', value);
+            },
+        },
+    },
+};
+</script>
+
+<style></style>
